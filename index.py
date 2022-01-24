@@ -30,5 +30,3 @@ for user in users:
             max_salary = job['salary']
             best_occupation.append({'occupation': job['occupation'], 'salary': job['salary']})
             print(best_occupation)
-
-pprint(user)
