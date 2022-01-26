@@ -8,7 +8,7 @@ user_wrong_password = []
 for user in users:
     if user['password'].isdigit():
         user_wrong_password.append({'name': user['name'], 'mail': user['mail']})
-        print(user_wrong_password)
+        print(*user_wrong_password)
 
 girls_drivers = []
 for user in users:
@@ -16,7 +16,10 @@ for user in users:
     for friend in friends:
         if friend['sex'] == 'F' and friend.get('cars', None):
             girls_drivers.append(friend['name'])
-            print(girls_drivers)
+            print(*girls_drivers)
+
+
+
 
        
 
@@ -34,7 +37,15 @@ for user in users:
             #print({'occupation': job['occupation'], 'salary': job['salary']})
             print(*best_occupation)
             
-
+expected = {}
+max_salary = 0
+for user in users:
+    friends = user.get('friends', [])
+    for friend in friends:
+        if friend['job']['salary'] > max_salary:
+            max_salary = friend['job']['salary']
+            expected = friend['job']
+            print(expected)
 
 
 

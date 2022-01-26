@@ -8,35 +8,30 @@ user_wrong_password = []
 for user in users:
     if user['password'].isdigit():
         user_wrong_password.append({'name': user['name'], 'mail': user['mail']})
-        print(user_wrong_password)
+        print(*user_wrong_password)
 
 girls_drivers = []
-
 for user in users:
-    for key, value in user.items():
-        if key == 'friends':
-            for elem in value:
-                if elem.get('sex', 'F') and elem.get('cars'):
-                    girls_drivers.append(elem['name'])
-                    print(*girls_drivers)
+    friends = user.get('friends', [])
+    for friend in friends:
+        if friend['sex'] == 'F' and friend.get('cars', None):
+            girls_drivers.append(friend['name'])
+            print(*girls_drivers)
 
-       
 
 best_occupation = []
 max_salary = 0
 
+            
+best_occupation = {}
+max_salary = 0
 for user in users:
     friends = user.get('friends', [])
     for friend in friends:
-        job = friend['job']
-        #salary = job['salary']
-        if job['salary'] > max_salary:
-            max_salary = job['salary']
-            best_occupation.append({'occupation': job['occupation'], 'salary': job['salary']})
-            #print({'occupation': job['occupation'], 'salary': job['salary']})
-            print(*best_occupation)
-            
-
+        if friend['job']['salary'] > max_salary:
+            max_salary = friend['job']['salary']
+            best_occupation = friend['job']
+            print(best_occupation)
 
 
 
@@ -87,8 +82,3 @@ while clean_users < len(users):
         del users[clean_users]
     else:
         clean_users += 1
-        
-
-    
-    
-            
