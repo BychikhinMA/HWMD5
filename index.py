@@ -25,8 +25,49 @@ for user in users:
     friends = user.get('friends', [])
     for friend in friends:
         job = friend['job']
-        salary = job['salary']
-        if salary > max_salary:
+        #salary = job['salary']
+        if job['salary'] > max_salary:
             max_salary = job['salary']
             best_occupation.append({'occupation': job['occupation'], 'salary': job['salary']})
-            print(best_occupation)
+           # print({'occupation': job['occupation'], 'salary': job['salary']})
+            #print(*best_occupation)
+            
+
+#vip_user = []
+
+
+#for user in users:
+  #  total = 0
+   # friends = user.get('friends', [])
+   # for friend in friends:
+    #    total += friend['job']['salary']
+     #   print(total)
+      #  if vip_user == total:
+       #     print(total)
+
+
+
+max_friends_total_salary = 0
+
+for user in users:
+    friends_total_salary = 0
+    friends = user.get('friends', [])
+    for friend in friends:
+        friends_total_salary += friend['job']['salary']
+    
+    if friends_total_salary > max_friends_total_salary:
+        max_friends_total_salary = friends_total_salary
+        vip_user = user['name']
+        print(vip_user)
+        print(max_friends_total_salary)
+            
+
+
+
+
+
+
+
+
+
+
