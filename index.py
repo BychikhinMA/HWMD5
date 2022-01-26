@@ -11,14 +11,12 @@ for user in users:
         print(user_wrong_password)
 
 girls_drivers = []
-
 for user in users:
-    for key, value in user.items():
-        if key == 'friends':
-            for elem in value:
-                if elem.get('sex', 'F') and elem.get('cars'):
-                    girls_drivers.append(elem['name'])
-                    print(*girls_drivers)
+    friends = user.get('friends', [])
+    for friend in friends:
+        if friend['sex'] == 'F' and friend.get('cars', None):
+            girls_drivers.append(friend['name'])
+            print(girls_drivers)
 
        
 
