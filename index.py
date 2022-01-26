@@ -17,25 +17,7 @@ for user in users:
         if friend['sex'] == 'F' and friend.get('cars', None):
             girls_drivers.append(friend['name'])
             print(*girls_drivers)
-
-
-
-
-       
-
-best_occupation = []
-max_salary = 0
-
-for user in users:
-    friends = user.get('friends', [])
-    for friend in friends:
-        job = friend['job']
-        #salary = job['salary']
-        if job['salary'] > max_salary:
-            max_salary = job['salary']
-            best_occupation.append({'occupation': job['occupation'], 'salary': job['salary']})
-            #print({'occupation': job['occupation'], 'salary': job['salary']})
-            print(*best_occupation)
+            
             
 best_occupation = {}
 max_salary = 0
@@ -80,19 +62,19 @@ print(avg_flights)
 
 
 clean_users = 0  
+
 while clean_users < len(users):
-    need_remove = False
+    removed = False
     friends = users[clean_users].get('friends', [])
     for friend in friends:
         flights = friend.get('flights', [])
         for flight in flights:
             if flight['country'] in countries:
-                need_remove = True
+                removed = True
                 break
-        if need_remove:
+        if removed:
             break
-    
-    if need_remove:
+    if removed:
         del users[clean_users]
     else:
         clean_users += 1
