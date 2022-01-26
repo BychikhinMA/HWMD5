@@ -3,12 +3,12 @@ from pprint import pprint
 
 
 
-user_wrong_password = []
+users_wrong_password = []
 
 for user in users:
     if user['password'].isdigit():
-        user_wrong_password.append({'name': user['name'], 'mail': user['mail']})
-        print(*user_wrong_password)
+        users_wrong_password.append({'name': user['name'], 'mail': user['mail']})
+        print(*users_wrong_password)
 
 girls_drivers = []
 for user in users:
