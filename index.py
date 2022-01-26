@@ -63,6 +63,28 @@ for user in users:
 avg_flights = round(total_flights / friends_with_cars, 5)
 print(avg_flights) 
 
+
+
+
+clean_users = 0  
+while clean_users < len(users):
+    need_remove = False
+    friends = users[clean_users].get('friends', [])
+    for friend in friends:
+        flights = friend.get('flights', [])
+        for flight in flights:
+            if flight['country'] in countries:
+                need_remove = True
+                break
+        if need_remove:
+            break
+    
+    if need_remove:
+        del users[clean_users]
+    else:
+        clean_users += 1
+        print(clean_users)
+
     
     
             
