@@ -33,33 +33,38 @@ for user in users:
             #print(*best_occupation)
             
 
-#vip_user = []
-
-
-#for user in users:
-  #  total = 0
-   # friends = user.get('friends', [])
-   # for friend in friends:
-    #    total += friend['job']['salary']
-     #   print(total)
-      #  if vip_user == total:
-       #     print(total)
 
 
 
-max_friends_total_salary = 0
+max_salary = 0
 
 for user in users:
-    friends_total_salary = 0
+    total_salary = 0
     friends = user.get('friends', [])
     for friend in friends:
-        friends_total_salary += friend['job']['salary']
+        total_salary += friend['job']['salary']
     
-    if friends_total_salary > max_friends_total_salary:
-        max_friends_total_salary = friends_total_salary
+    if total_salary > max_salary:
+        max_salary = total_salary
         vip_user = user['name']
         print(vip_user)
-        print(max_friends_total_salary)
+        print(max_salary)
+
+
+total_flights = 0
+friends_with_cars = 0
+
+for user in users:
+    friends = user.get('friends', [])
+    for friend in friends:
+        if friend.get('cars'):
+            friends_with_cars += 1
+            total_flights += len(friend.get('flights', []))
+avg_flights = round(total_flights / friends_with_cars, 5)
+print(avg_flights) 
+
+    
+    
             
 
 

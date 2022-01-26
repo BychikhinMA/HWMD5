@@ -1,0 +1,13 @@
+max_friends_total_salary = 0
+
+for user in users:
+    friends_total_salary = 0
+    friends = user.get('friends', [])
+    for friend in friends:
+        friends_total_salary += friend['job']['salary']
+    
+    if friends_total_salary > max_friends_total_salary:
+        max_friends_total_salary = friends_total_salary
+        vip_user = user['name']
+        print(vip_user)
+        print(max_friends_total_salary)
