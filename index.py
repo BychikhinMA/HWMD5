@@ -51,16 +51,16 @@ for user in users:
         print(max_salary)
 
 
-total_flights = 0
-friends_with_cars = 0
+total = 0
+cars = 0
 
 for user in users:
     friends = user.get('friends', [])
     for friend in friends:
         if friend.get('cars'):
-            friends_with_cars += 1
-            total_flights += len(friend.get('flights', []))
-avg_flights = round(total_flights / friends_with_cars, 5)
+            cars += 1
+            total += len(friend.get('flights', []))
+avg_flights = round(total / cars, 5)
 print(avg_flights) 
 
 
@@ -83,7 +83,7 @@ while clean_users < len(users):
         del users[clean_users]
     else:
         clean_users += 1
-        print(clean_users)
+        
 
     
     
