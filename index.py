@@ -37,15 +37,15 @@ for user in users:
             #print({'occupation': job['occupation'], 'salary': job['salary']})
             print(*best_occupation)
             
-expected = {}
+best_occupation = {}
 max_salary = 0
 for user in users:
     friends = user.get('friends', [])
     for friend in friends:
         if friend['job']['salary'] > max_salary:
             max_salary = friend['job']['salary']
-            expected = friend['job']
-            print(expected)
+            best_occupation = friend['job']
+            print(best_occupation)
 
 
 
